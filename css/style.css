@@ -14,21 +14,18 @@ body {
     margin-top: 100px;
 }
 
-#temp {
+.tank {
+    display: inline-block;
     background-color: black;
     width: 80px;
     height: 40px;
     position: relative;
-    left: 100px;
-    top: calc(100% - 40px);
 }
 
 .bullet {
     position: relative;
     background-color: blueviolet;
-    display: none;
     width: 10px;
     height: 10px;
-    left: 100%;
     transform: rotate(45deg);
 }

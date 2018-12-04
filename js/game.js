@@ -1,25 +1,14 @@
 "use-strict";
 
-let battleField = document.getElementById("battlefield");
-let bullet = document.getElementsByClassName("bullet")[0];
-battleField.addEventListener("click", testShoot);
+import {TankController} from "./tank/TankController.js";
+import {Position} from "./position/Position.js";
+import {TankView} from "./tank/TankView.js";
+import {Tank} from "./tank/Tank.js";
 
+let tankPosition = new Position(0,0);
+let tank = new Tank("franek", tankPosition);
+let franekControler = new TankController(tank);
+let franekView = new TankView(franekControler);
+document.getElementById("battlefield").appendChild(franekView.tankElement);
 
-function testShoot(event) {
-    let x = bullet.offsetLeft;
-    let interval = setInterval((x) => {
-        x = bullet.offsetLeft;
-        bullet.style.display = "block";
-        bullet.style.left = x + 10 + "px";
-        if (x > 1000) {
-            clearInterval(interval);
-            hideBullet();
-        }
-    }, 20);
-}
-
-function hideBullet() {
-    bullet.style.left = "100%";
-    bullet.style.display = "none";
-}
 
