@@ -1,9 +1,9 @@
 export class Bullet{
- constructor(tank){
+ constructor(tank, shotParameters){
     this.tank = tank;
     this.pos = tank.getPos();
-    // this.angle = tank.getShotAngle();
-    // this.power = tank.getShotPower();
+    this.angle = shotParameters.getAngle();
+    this.power = shotParameters.getPower();
  }
     getPos(){
         return this.pos;
@@ -13,11 +13,11 @@ export class Bullet{
         this.pos = position;
     }
 
-    getShotAngle(){
+    getAngle(){
         return this.angle;
     }
 
-    getShotPower(){
+    getPower(){
         return this.power;
     }
 }

@@ -10,7 +10,7 @@ export class ShotParameter {
     }
 
     setAngle(angle) {
-        this.x = x;
+        this.angle = angle;
     }
 
     getPower() {
