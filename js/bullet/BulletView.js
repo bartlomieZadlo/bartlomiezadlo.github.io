@@ -1,5 +1,3 @@
-import {BulletController} from "./BulletController.js";
-
 export class BulletView{
 
     constructor(bulletController){

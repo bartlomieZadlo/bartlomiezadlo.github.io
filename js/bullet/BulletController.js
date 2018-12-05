@@ -1,3 +1,5 @@
+import {gravityAcceleration} from "../game.js"
+
 export class BulletController{
     constructor(bulletObject){
         this.bullet = bulletObject;      
@@ -24,7 +26,7 @@ export class BulletController{
 
     calulateTrajectory(power, angle, startPoint){
         let angleRad = angle * Math.PI/180
-        let gravityAcceleration = 9.8;
+        
         
         let ySpeed = Math.sin(angleRad) * power;
         let xSpeed = Math.cos(angleRad) * power;
