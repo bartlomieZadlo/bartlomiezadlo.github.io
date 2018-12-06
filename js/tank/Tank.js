@@ -2,6 +2,8 @@ export class Tank {
     constructor(name, position) {
         this.name = name;
         this.position = position;
+        this.xStart = position.getX();
+        this.yStart = position.getY();
     }
 
     getPos() {
@@ -14,5 +16,13 @@ export class Tank {
 
     getName() {
         return this.name;
+    }
+
+    getxStart(){
+        return this.xStart;
+    }
+    
+    getyStart(){
+        return this.yStart;
     }
 }   

@@ -2,7 +2,7 @@ import {Bullet} from "../bullet/Bullet.js";
 import {BulletView} from "../bullet/BulletView.js";
 import {BulletController} from "../bullet/BulletController.js";
 import { ShotParameter } from "./ShotParameter.js";
-import { KeyCodes} from "../game.js";
+import {KeyCodes} from "../Constants.js";
 
 export class TankController {
     constructor(tank) {
@@ -21,20 +21,32 @@ export class TankController {
         } else if (keyCode == KeyCodes.LEFT){
             this.shotParams.decrementPower()
         }
-
-        console.log(this.shotParams.getAngle() + "   " + this.shotParams.getPower());
+        if(this.shotParams.getAngle()<0){
+            this.shotParams.setAngle(10);
+        }
+        if(this.shotParams.getPower()<0){
+            this.shotParams.setPower(10);
+        }
+        if(this.shotParams.getAngle()>180){
+            this.shotParams.setAngle(180);
+        }
     } 
 
-    shoot(e) {
+    createBullet(e) {
+
         let bullet = new Bullet(this.tank, this.shotParams);
         let bulletController = new BulletController(bullet);
         let bulletView = new BulletView(bulletController);
-        document.getElementById(`${this.tank.getName()}`).appendChild(bulletView.element);
-        bulletController.moveBullet();
+        document.getElementById(`battlefield`).appendChild(bulletView.element);
+        return bulletView;
     }
 
     getShotParameters() {
         return this.shotParams;
+    }
+
+    getTank(){
+        return this.tank;
     }
 }
     

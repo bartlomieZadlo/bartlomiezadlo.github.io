@@ -17,4 +17,8 @@ export class BulletView{
         elem.innerHTML = this.render().trim();
         return elem.content.firstChild;
     }
+
+    getController(){
+        return this.controller;
+    }
 }

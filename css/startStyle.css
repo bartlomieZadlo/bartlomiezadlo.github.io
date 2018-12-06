@@ -1,0 +1,67 @@
+body {
+    font-family: "Open Sans", Helvetica, sans-serif;
+    background-position: center;
+    background-size: cover;  
+    background-color: #161514;
+}
+
+
+.login-screen {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.login-form {
+    color:#E26821;
+    width: 300px;
+    height: 130px;
+    position: absolute;
+    top: 350px;
+}
+
+.login-form h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Rakkas', cursive;
+    font-weight: 100;
+    font-size: 300%;
+    position: relative;
+    letter-spacing: 15px;
+    color: #E26821;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.login-form input[type="text"], input[type="password"], input[type="submit"] {
+    height: 30px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.19);    
+    text-align: center;
+}
+
+.login-form input[type="submit"] {
+    border-radius: 25px;
+    background-color:#E26821; 
+    color: #F4F3F1;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+
+}
+
+.login-form input[type="submit"]:hover {
+    opacity: 1;
+}
+
+.login-form a {
+    text-decoration: none;
+    color: #525156;
+    display: block;
+    text-align: center;
+    font-size: 13px;
+    margin: 0 0 7px 0;
+}

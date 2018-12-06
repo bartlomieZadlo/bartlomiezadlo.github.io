@@ -8,8 +8,10 @@ export class TankView {
     render() {
         let name = this.tankController.tank.getName();
         let positionLeft = this.tankController.tank.getPos().getX();
+        let positionTop = this.tankController.tank.getPos().getY();
+        
         return `
-        <div class="tank" id="${name}" style="left: ${positionLeft}px; top: calc(100% - 40px)"></div>
+        <div class="tank" id="${name}" style="left: ${positionLeft}px; top: ${positionTop}px"></div>
         `
     }
 
@@ -20,8 +22,11 @@ export class TankView {
     }
 
     registerEventListeners() {
-        this.tankElement.addEventListener("click", this.tankController.shoot.bind(this.tankController));
-        document.addEventListener("keydown", this.tankController.changeShotParams.bind(this.tankController), false);
+        document.addEventListener("keydown", this.tankController.changeShotParams.bind(this.tankController));
+    }
+
+    getController(){
+        return this.tankController;
     }
 
 }
