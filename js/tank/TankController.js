@@ -8,6 +8,7 @@ export class TankController {
     constructor(tank) {
         this.tank = tank;
         this.shotParams = new ShotParameter(45,50);
+        this.addEventListener();
     }
 
     changeShotParams(e){
@@ -30,6 +31,7 @@ export class TankController {
         if(this.shotParams.getAngle()>180){
             this.shotParams.setAngle(180);
         }
+        document.getElementById(this.tank.getName()).children[1].style.transform = `rotate(-${this.shotParams.getAngle()}deg)`;
     } 
 
     createBullet(e) {
@@ -47,6 +49,10 @@ export class TankController {
 
     getTank(){
         return this.tank;
+    }
+
+    addEventListener(){
+        document.addEventListener("keydown", this.changeShotParams.bind(this));
     }
 }
     

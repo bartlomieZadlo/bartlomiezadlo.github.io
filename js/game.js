@@ -11,34 +11,30 @@ import {BattlefieldView} from "./battlefield/BattlefieldView.js";
 import { TankParams } from "./Constants.js";
 
 let battlefieldView;
+let groundCords;
+let map1 = "(-0.001)*x^2+500";
+let map2 = "0.0002*x^2+200";
+let map3 = "0.00001*x^5+(-0.0000001)*x^4+(-0.01)*x^3+0.00001*(x-10)^2+100";
 
 
 
 const prepareBattlefield = new Promise((resolve, reject) => {
-    let ground = new Ground("(-1)*x+500");
-    let groundCords = ground.getCordsArray();
+    let ground = new Ground("(x-10)*(x+8)^2+400");
+    groundCords = ground.getCordsArray();
     let tankViewList = new Array();
     tankViewList.push(createTank(300, groundCords, "bob"))
     tankViewList.push(createTank(180, groundCords, "Franek"))
+    tankViewList.push(createTank(500, groundCords, "Benek"))
     
-    
-
-    battlefieldView = createBattlefield(tankViewList);
-
-   
-    
+    battlefieldView = createBattlefield(tankViewList, groundCords);
     document.body.appendChild(battlefieldView.battlefieldElement);
     
-    
-
     for (let i = 0; i <= groundCords.length -1; i++){
         let xPos = groundCords[i][0];
         let yPos = groundCords[i][1];
         let groundElementPosition = new Position(xPos,yPos)
         document.getElementById("battlefield").appendChild(battlefieldView.getGroundElement(groundElementPosition));
     }
-
-    
 
     if (battlefieldView){
     resolve((printBfield(tankViewList, battlefieldView))
@@ -79,9 +75,9 @@ function createTank(xPos, groundCords, name){
     
 }
 
-function createBattlefield(tankViewList){
+function createBattlefield(tankViewList, groundCords){
     let newBattlefield = new Battlefield(tankViewList);
-    let battlefieldController = new BattlefieldController(newBattlefield);
+    let battlefieldController = new BattlefieldController(newBattlefield, groundCords);
     let battlefieldView = new BattlefieldView(battlefieldController);
     return battlefieldView;
 }

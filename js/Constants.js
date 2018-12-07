@@ -19,6 +19,11 @@ export const BattlefieldParams = {
 };
 
 export const BulletParams = {
-    WITDH: 10,
-    HEIGHT: 10,
+    WITDH: 5,
+    HEIGHT: 5,
+};
+
+export const GroundElement = {
+    WITDH:1,
+    HEIGHT:1,
 };

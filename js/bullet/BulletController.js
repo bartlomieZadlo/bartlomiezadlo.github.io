@@ -1,4 +1,4 @@
-import {gravityAcceleration, TankParams} from "../Constants.js"
+import {gravityAcceleration, TankParams, BattlefieldParams} from "../Constants.js"
 import { Position } from "../position/Position.js";
 
 export class BulletController{
@@ -18,11 +18,7 @@ export class BulletController{
             bulletElem.style.left = xPos + "px";
             bulletElem.style.top = yPos + "px";
             this.bullet.setPos(new Position(xPos, yPos))
-            if (i == trajectory.length - 1 ) {
-                bulletElem.parentElement.removeChild(bulletElem);
-                delete this.bullet.getPos();
-            }
-            await this.sleep(0.1); 
+            await this.sleep(50); 
         }
         return false;
         }
@@ -33,15 +29,19 @@ export class BulletController{
         let ySpeed = Math.sin(angleRad) * power;
         let xSpeed = Math.cos(angleRad) * power;
         let xStart = startPoint.getX();
-        let yStart = startPoint.getY() - 60;
+        let yStart = startPoint.getY() - 6;
+
         let stopTime = ySpeed/gravityAcceleration;
-        let flyTime = stopTime + Math.sqrt((ySpeed * stopTime - gravityAcceleration/2 * Math.pow(stopTime, 2) +yStart) * 2/gravityAcceleration);
+        let flightHeight = ySpeed * stopTime - gravityAcceleration/2 *Math.pow(stopTime,2);
+        let finalFallDistance = BattlefieldParams.HEIGHT - yStart + flightHeight;
+         
+        let flyTime = stopTime + Math.sqrt(2*(finalFallDistance)/gravityAcceleration);
         let trajTable = new Array();
         
-        for (let i = 0; i<flyTime; i += 0.05){
+        for (let i = 0; i<flyTime; i += 0.15){
             let yValue = yStart - ySpeed * i + gravityAcceleration/2 * Math.pow(i, 2);
             let xValue = xSpeed * i + xStart;
-            trajTable.push([xValue, yValue]);  
+            trajTable.push([xValue, yValue]); 
         }
         
         return trajTable;

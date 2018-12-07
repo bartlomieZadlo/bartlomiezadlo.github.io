@@ -5,10 +5,12 @@ export class Ground{
         this.equation = equation;
         this.cordsArray = new Array();
         this.parseEquation();
+        // this.eq = prompt("Provide equation");
         
     }
 
     parseEquation(){
+            // let eq = prompt("Provide equation");
             let i = 0;
             let splittedEquation = this.equation.split("+");
             let y = 0;
@@ -40,14 +42,13 @@ export class Ground{
                     }
 
                 }
-                this.cordsArray.push([i,y]);
+                this.cordsArray.push([i, eval(0.01*i*20*Math.sin(0.02*i)+300)]);
                 i++;
             }
             
     }
 
     calculatePosition(param, power, i){
-        
         return param * Math.pow(i, power);
     }
 

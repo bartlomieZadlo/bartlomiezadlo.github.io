@@ -1,55 +1,109 @@
+:root {
+    --ground-color: #238c25;
+    --bar-color: #afafaf;
+}
+
+@font-face {
+    font-family: "Computer";
+    src: url(../media/Computer.ttf);
+}
+
+html {
+    overflow-y: hidden;
+    overflow-x: hidden; 
+}
+
 body {
-    display: flex;
-    justify-content: center;
-    background-image: url("apocalypse-2273069_1280.jpg");
+    /* display: flex;
+    justify-content: center; */
     width: 1000px;
-    height: 500px;
+    height: 900px;
     margin: 0px;
     background-repeat: no-repeat;
 }
 
 #battlefield {
+    background-image: url("../media/space.jpg");
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+#battlefield-interface {
     background-color: white;
-    align-self: center;
+    /* align-self: center; */
     width: 1000px;
-    height: 500px;
+    height: 500px; 
 }
 
 .tank {
     display: inline-block;
-    background-color:black;
+    background-color:rgb(255, 251, 0);
     position: absolute;
-
+    border-radius: 25% 25% 40% 40%;
     width: 20px;
     height: 10px;
+    color: rgb(255, 251, 0);
+}
+
+.cannon {
+    position: relative;
+    width: 17px;
+    height: 4px;
+    top: -10px;
+    background-color: rgb(255, 251, 0);
+    transform: rotate(-45deg);
+    border-radius: 25%;
+}
+
+.nametag{
+    font-family: "Computer", sans-serif;
+    width: 20px;
+    height: 10px;   
+    position: relative;
+    top: -25px;
+    text-align: center;
 }
 
 .bullet {
     position: absolute;
-    background-color: blueviolet;
-    width: 10px;
-    height: 10px;
+    background-color: rgb(255, 0, 0);
+    border-radius: 50%;
+    width: 5px;
+    height: 5px;
 }
 
 .mountain{
     position: absolute;
     display: block;
-    width: 2px;
-    height: 2px;
-    background-color: blue;
+    width: 1px;
+    height: 1px;
+    background-color: var(--ground-color);
 }
 
 #top-bar {
+    font-family: "Computer", sans-serif;
+    font-weight: 100;
+    position: absolute;
     display: flex;
     justify-content: center;
-    background-color: black;
-    color: aliceblue;
+    background-color: var(--bar-color);
+    color: black;
+    top:500px;
+    width: 992px;
+    font-size: 13px;
+    border: 4px solid rgb(110, 110, 110);
 }
 
 .shot-parameters {
     display: flex;
     justify-content: center;
     align-content: space-around;
+}
+
+.shot-parameters h3 {
+    margin-left: 10px;
 }
 
 .tank-name {

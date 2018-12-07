@@ -2,7 +2,6 @@ export class TankView {
     constructor(tankController) {
         this.tankController = tankController;
         this.tankElement = this.createTankElement();
-        this.registerEventListeners();
     }
 
     render() {
@@ -11,7 +10,10 @@ export class TankView {
         let positionTop = this.tankController.tank.getPos().getY();
         
         return `
-        <div class="tank" id="${name}" style="left: ${positionLeft}px; top: ${positionTop}px"></div>
+        <div class="tank" id="${name}" style="left: ${positionLeft}px; top: ${positionTop}px">
+            <div class="nametag">${name}</div>
+            <div class="cannon"></div>
+        </div>
         `
     }
 
@@ -21,12 +23,15 @@ export class TankView {
         return elem.content.firstChild;
     }
 
-    registerEventListeners() {
-        document.addEventListener("keydown", this.tankController.changeShotParams.bind(this.tankController));
-    }
-
     getController(){
         return this.tankController;
     }
 
+    // renderTank() {
+    //     this.tankElement = this.createTankElement();
+    // }
+
+    // addEventListeners() {
+    //     document.addEventListener("keydown", this.renderTank.bind(this));
+    // }
 }
