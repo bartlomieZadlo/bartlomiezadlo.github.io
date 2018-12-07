@@ -77,13 +77,13 @@ export class BattlefieldController {
             }
             
             let currentX = parseInt(currentPos.getX());
-            if(currentX < 500 && currentX > 0){
+            if(currentX < BattlefieldParams.WITDH && currentX > 0){
                 let xCord = this.groundCords[currentX][0];
                 let yCord = this.groundCords[currentX][1];
                 let mapPos = new Position(xCord, yCord);
                 hitGround = this.isCollideGround(currentPos, mapPos);
                 
-            }else if (currentX<0 && currentX > 500){
+            }else if (currentX<0 && currentX > BattlefieldParams.WITDH){
                 hitSomething = false;
             }
             
