@@ -31,7 +31,7 @@ export class TankController {
         if(this.shotParams.getAngle()>180){
             this.shotParams.setAngle(180);
         }
-        document.getElementById(this.tank.getName()).children[1].style.transform = `rotate(-${this.shotParams.getAngle()}deg)`;
+        document.getElementsByClassName("cannon")[this.battlefield.currentTankId].style.transform = `rotate(-${this.shotParams.getAngle()}deg)`;
     } 
 
     createBullet(e) {
