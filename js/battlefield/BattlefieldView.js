@@ -39,7 +39,7 @@ export class BattlefieldView {
                 <h3>Power: ${currentTankPower}</h3>
             </div>
             <div class="tank-name"> 
-                <h3>Name: ${currentTankName}</h3>
+                <h3>Current Player: ${currentTankName}</h3>
             </div>
         </div>
         `

@@ -53,6 +53,7 @@ export class BattlefieldController {
         let hitSomething = this.bulletView.getController().moveBullet();
         let hitTank = false;
         let hitGround = false;
+        
         do{ 
             
             let currentPos = this.bulletView.getController().getBullet().getPos();
@@ -76,14 +77,20 @@ export class BattlefieldController {
             }
             
             let currentX = parseInt(currentPos.getX());
-            let xCord = this.groundCords[currentX][0];
-            let yCord = this.groundCords[currentX][1];
-            let mapPos = new Position(xCord, yCord);
-            hitGround = this.isCollideGround(currentPos, mapPos)
+            if(currentX < 500 && currentX > 0){
+                let xCord = this.groundCords[currentX][0];
+                let yCord = this.groundCords[currentX][1];
+                let mapPos = new Position(xCord, yCord);
+                hitGround = this.isCollideGround(currentPos, mapPos);
+                
+            }else if (currentX<0 && currentX > 500){
+                hitSomething = false;
+            }
             
             if(hitGround){
                 hitSomething = !hitGround;
             }
+            
           await this.sleep(20);
         }while(hitSomething)
         let bulletElem = document.getElementsByClassName("bullet")[0];

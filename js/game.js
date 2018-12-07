@@ -22,9 +22,8 @@ const prepareBattlefield = new Promise((resolve, reject) => {
     let ground = new Ground("(x-10)*(x+8)^2+400");
     groundCords = ground.getCordsArray();
     let tankViewList = new Array();
-    tankViewList.push(createTank(300, groundCords, "bob"))
-    tankViewList.push(createTank(180, groundCords, "Franek"))
-    tankViewList.push(createTank(500, groundCords, "Benek"))
+    tankViewList.push(createTank(180, groundCords, "Player1"))
+    tankViewList.push(createTank(500, groundCords, "Player2"))
     
     battlefieldView = createBattlefield(tankViewList, groundCords);
     document.body.appendChild(battlefieldView.battlefieldElement);
